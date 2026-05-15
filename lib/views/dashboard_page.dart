@@ -10,7 +10,6 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-
   BarangService service = BarangService();
 
   List barang = [];
@@ -20,7 +19,6 @@ class _DashboardPageState extends State<DashboardPage> {
   int selectedIndex = 0;
 
   getData() async {
-
     barang = await service.getBarang();
 
     setState(() {
@@ -37,7 +35,6 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.white,
 
@@ -47,11 +44,7 @@ class _DashboardPageState extends State<DashboardPage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
 
-            colors: [
-              Colors.white,
-              Color(0xffEAF5F1),
-              Color(0xff1F5B4D),
-            ],
+            colors: [Colors.white, Color(0xffEAF5F1), Color(0xff1F5B4D)],
           ),
         ),
 
@@ -59,7 +52,6 @@ class _DashboardPageState extends State<DashboardPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-
                 const SizedBox(height: 20),
 
                 /// =========================
@@ -70,14 +62,11 @@ class _DashboardPageState extends State<DashboardPage> {
 
                   child: Row(
                     children: [
-
                       Expanded(
                         child: Container(
-                          height: 50,
+                          height: 52,
 
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 15,
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 18),
 
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -85,29 +74,48 @@ class _DashboardPageState extends State<DashboardPage> {
 
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black26,
-                                blurRadius: 12,
-                                offset: const Offset(0, 5),
+                                color: Colors.black.withOpacity(0.07),
+                                blurRadius: 30,
+                                spreadRadius: 5,
+                                offset: const Offset(0, 8),
+                              ),
+
+                              BoxShadow(
+                                color: const Color.fromARGB(
+                                  255,
+                                  0,
+                                  0,
+                                  0,
+                                ).withOpacity(0.9),
+                                blurRadius: 5,
+                                offset: const Offset(1, 1),
                               ),
                             ],
                           ),
 
                           child: Row(
                             children: [
-
                               const Expanded(
                                 child: TextField(
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: -0.2,
+                                  ),
+
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Search",
+
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
 
-                              Icon(
-                                Icons.search,
-                                color: Colors.grey.shade600,
-                              ),
+                              Icon(Icons.search, color: Colors.grey.shade600),
                             ],
                           ),
                         ),
@@ -118,16 +126,13 @@ class _DashboardPageState extends State<DashboardPage> {
                       /// CART BUTTON
                       GestureDetector(
                         onTap: () {
-
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text("Cart clicked"),
-                            ),
+                            const SnackBar(content: Text("Cart clicked")),
                           );
                         },
 
                         child: Container(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(12),
 
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -135,9 +140,19 @@ class _DashboardPageState extends State<DashboardPage> {
 
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black26,
-                                blurRadius: 12,
-                                offset: const Offset(0, 5),
+                                color: const Color(
+                                  0xff1F5B4D,
+                                ).withOpacity(0.18),
+
+                                blurRadius: 20,
+                                spreadRadius: 1,
+                                offset: const Offset(0, 8),
+                              ),
+
+                              BoxShadow(
+                                color: Colors.white.withOpacity(0.9),
+                                blurRadius: 10,
+                                offset: const Offset(-2, -2),
                               ),
                             ],
                           ),
@@ -161,25 +176,22 @@ class _DashboardPageState extends State<DashboardPage> {
                 Container(
                   height: 180,
 
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
 
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
+                    borderRadius: BorderRadius.circular(28),
 
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 12,
-                        offset: const Offset(0, 5),
+                        color: Colors.black.withOpacity(0.12),
+                        blurRadius: 22,
+                        spreadRadius: 1,
+                        offset: const Offset(0, 10),
                       ),
                     ],
 
                     image: const DecorationImage(
-                      image: AssetImage(
-                        "assets/banner (2).png",
-                      ),
+                      image: AssetImage("assets/banner (2).png"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -217,25 +229,30 @@ class _DashboardPageState extends State<DashboardPage> {
 
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 12,
-                          offset: const Offset(0, 5),
+                          color: const Color.fromARGB(
+                            255,
+                            0,
+                            0,
+                            0,
+                          ).withOpacity(0.9),
+                          blurRadius: 5,
+                          offset: const Offset(1, 1),
                         ),
                       ],
                     ),
 
                     child: Column(
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
 
                       children: [
-
                         const Text(
                           "Top Offers for you",
 
                           style: TextStyle(
                             fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -0.3,
+                            color: Colors.black87,
                           ),
                         ),
 
@@ -243,7 +260,6 @@ class _DashboardPageState extends State<DashboardPage> {
 
                         Row(
                           children: [
-
                             Expanded(
                               child: offerItem(
                                 "50%\nOFF",
@@ -280,25 +296,22 @@ class _DashboardPageState extends State<DashboardPage> {
 
                 const SizedBox(height: 30),
 
-                /// =========================
                 /// PEOPLE TOP PICKS
-                /// =========================
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
 
                   child: Row(
-                    mainAxisAlignment:
-                        MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                     children: [
-
                       Text(
                         "People Top Picks",
 
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.black87,
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: -0.3,
                         ),
                       ),
 
@@ -307,6 +320,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
                         style: TextStyle(
                           color: Colors.black54,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -316,10 +330,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 const SizedBox(height: 20),
 
                 isLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-
+                    ? const Center(child: CircularProgressIndicator())
                     : SizedBox(
                         height: 220,
 
@@ -329,13 +340,10 @@ class _DashboardPageState extends State<DashboardPage> {
                           itemCount: barang.length,
 
                           itemBuilder: (context, index) {
-
                             return foodCard(
                               image: barang[index]['image'],
-                              title:
-                                  barang[index]['nama_barang'],
-                              price:
-                                  "Rp ${barang[index]['harga'] ?? 0}",
+                              title: barang[index]['nama_barang'],
+                              price: "Rp ${barang[index]['harga'] ?? 0}",
                             );
                           },
                         ),
@@ -350,18 +358,17 @@ class _DashboardPageState extends State<DashboardPage> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
 
                   child: Row(
-                    mainAxisAlignment:
-                        MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                     children: [
-
                       Text(
                         "Last Stock",
 
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.black87,
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: -0.3,
                         ),
                       ),
 
@@ -370,6 +377,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
                         style: TextStyle(
                           color: Colors.black54,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -379,10 +387,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 const SizedBox(height: 20),
 
                 isLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-
+                    ? const Center(child: CircularProgressIndicator())
                     : SizedBox(
                         height: 220,
 
@@ -392,13 +397,10 @@ class _DashboardPageState extends State<DashboardPage> {
                           itemCount: barang.length,
 
                           itemBuilder: (context, index) {
-
                             return foodCard(
                               image: barang[index]['image'],
-                              title:
-                                  barang[index]['nama_barang'],
-                              price:
-                                  "Rp ${barang[index]['harga'] ?? 0}",
+                              title: barang[index]['nama_barang'],
+                              price: "Rp ${barang[index]['harga'] ?? 0}",
                             );
                           },
                         ),
@@ -417,7 +419,7 @@ class _DashboardPageState extends State<DashboardPage> {
       bottomNavigationBar: Container(
         margin: const EdgeInsets.all(20),
 
-        height: 70,
+        height: 72,
 
         decoration: BoxDecoration(
           color: Colors.white,
@@ -425,19 +427,17 @@ class _DashboardPageState extends State<DashboardPage> {
 
           boxShadow: [
             BoxShadow(
-              color: Colors.black26,
-              blurRadius: 12,
-              offset: const Offset(0, 5),
+              color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.9),
+              blurRadius: 5,
+              offset: const Offset(1, 1),
             ),
           ],
         ),
 
         child: Row(
-          mainAxisAlignment:
-              MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
           children: [
-
             navItem(Icons.home, 0),
 
             navItem(Icons.receipt_long, 1),
@@ -453,10 +453,8 @@ class _DashboardPageState extends State<DashboardPage> {
   /// NAVBAR ITEM
   /// =========================
   Widget navItem(IconData icon, int index) {
-
     return GestureDetector(
       onTap: () {
-
         setState(() {
           selectedIndex = index;
         });
@@ -468,7 +466,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
         color: selectedIndex == index
             ? const Color(0xff1F5B4D)
-            : Colors.grey,
+            : Colors.grey.shade500,
       ),
     );
   }
@@ -481,7 +479,6 @@ class _DashboardPageState extends State<DashboardPage> {
     required String title,
     required String price,
   }) {
-
     return Container(
       width: 135,
       height: 200,
@@ -496,36 +493,31 @@ class _DashboardPageState extends State<DashboardPage> {
 
         boxShadow: [
           BoxShadow(
-            color: Colors.black12,
-            blurRadius: 8,
-            offset: const Offset(0, 4),
+            color: Colors.black.withOpacity(0.06),
+            blurRadius: 18,
+            spreadRadius: 1,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
 
       child: Column(
-        crossAxisAlignment:
-            CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
-
           SizedBox(
             height: 110,
 
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(18),
 
               child: Image.network(
                 image,
                 fit: BoxFit.cover,
                 width: double.infinity,
 
-                errorBuilder:
-                    (context, error, stackTrace) {
-
-                  return const Icon(
-                    Icons.broken_image,
-                  );
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(Icons.broken_image);
                 },
               ),
             ),
@@ -534,11 +526,9 @@ class _DashboardPageState extends State<DashboardPage> {
           const SizedBox(height: 10),
 
           Row(
-            mainAxisAlignment:
-                MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
             children: [
-
               Expanded(
                 child: Text(
                   title,
@@ -546,37 +536,39 @@ class _DashboardPageState extends State<DashboardPage> {
                   overflow: TextOverflow.ellipsis,
 
                   style: const TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w700,
                     fontSize: 13,
+                    letterSpacing: -0.2,
+                    color: Colors.black87,
                   ),
                 ),
               ),
 
               GestureDetector(
                 onTap: () {
-
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(
-                    SnackBar(
-                      content: Text("$title added"),
-                    ),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text("$title added")));
                 },
 
                 child: Container(
-                  padding: const EdgeInsets.all(4),
+                  padding: const EdgeInsets.all(5),
 
                   decoration: BoxDecoration(
                     color: const Color(0xff1F5B4D),
-                    borderRadius:
-                        BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(9),
+
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xff1F5B4D).withOpacity(0.25),
+
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
                   ),
 
-                  child: const Icon(
-                    Icons.add,
-                    size: 14,
-                    color: Colors.white,
-                  ),
+                  child: const Icon(Icons.add, size: 14, color: Colors.white),
                 ),
               ),
             ],
@@ -588,8 +580,10 @@ class _DashboardPageState extends State<DashboardPage> {
             price,
 
             style: TextStyle(
-              color: Colors.grey.shade700,
+              color: Colors.grey.shade800,
               fontSize: 12,
+              fontWeight: FontWeight.w600,
+              letterSpacing: -0.2,
             ),
           ),
         ],
@@ -600,12 +594,7 @@ class _DashboardPageState extends State<DashboardPage> {
   /// =========================
   /// OFFER ITEM
   /// =========================
-  Widget offerItem(
-    String title,
-    String subtitle,
-    Color color,
-  ) {
-
+  Widget offerItem(String title, String subtitle, Color color) {
     return Container(
       height: 105,
 
@@ -614,26 +603,39 @@ class _DashboardPageState extends State<DashboardPage> {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(18),
+
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
 
       child: Column(
-        crossAxisAlignment:
-            CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
 
-        mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
         children: [
-
           Align(
             alignment: Alignment.topRight,
 
             child: Container(
-              padding: const EdgeInsets.all(4),
+              padding: const EdgeInsets.all(5),
 
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
+
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 6,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
               ),
 
               child: const Icon(
@@ -645,18 +647,17 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
 
           Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
-
               Text(
                 title,
 
                 style: const TextStyle(
                   fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                   height: 1,
+                  letterSpacing: -0.2,
                 ),
               ),
 
@@ -670,6 +671,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
                 style: const TextStyle(
                   fontSize: 10,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ],

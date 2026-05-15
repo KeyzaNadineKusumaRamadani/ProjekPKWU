@@ -22,7 +22,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
 
   int currentIndex = 0;
 
-  Timer? timer;
+  Timer? timer; 
 
   @override
   void initState() {
@@ -33,7 +33,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
     );
 
     timer = Timer.periodic(
-      const Duration(seconds: 3),
+      const Duration(seconds: 2),
       (timer) {
 
         if (controller.hasClients) {
