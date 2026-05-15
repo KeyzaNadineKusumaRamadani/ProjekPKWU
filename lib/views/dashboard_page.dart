@@ -417,9 +417,9 @@ class _DashboardPageState extends State<DashboardPage> {
       /// BOTTOM NAVBAR
       /// =========================
       bottomNavigationBar: Container(
-        margin: const EdgeInsets.all(20),
+        margin: const EdgeInsets.all(15),
 
-        height: 72,
+        height: 65,
 
         decoration: BoxDecoration(
           color: Colors.white,
