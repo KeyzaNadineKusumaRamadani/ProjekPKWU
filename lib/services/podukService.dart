@@ -1,18 +1,17 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:projek_kik/models/productModels.dart';
 import 'package:projek_kik/services/appconstans.dart';
 
 class ProductService {
-  static Uri _uri(String path) =>
-      Uri.parse('${AppConstants.baseUrl}$path');
+  static Uri _uri(String path) => Uri.parse('${BaseUrl}$path');
 
   static const Map<String, String> _headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   };
 
-  /// GET /barang — semua produk
   static Future<List<Product>> getAllProducts() async {
     try {
       final res = await http.get(_uri('/barang'), headers: _headers);
@@ -27,12 +26,10 @@ class ProductService {
     }
   }
 
-  /// GET /barang?category=... — filter kategori
-  static Future<List<Product>> getProductsByCategory(
-      String category) async {
+  static Future<List<Product>> getProductsByCategory(String category) async {
     try {
       final res = await http.get(
-        Uri.parse('${AppConstants.baseUrl}/barang?category=$category'),
+        Uri.parse('${BaseUrl}/barang?category=$category'),
         headers: _headers,
       );
       if (res.statusCode == 200) {
@@ -46,11 +43,9 @@ class ProductService {
     }
   }
 
-  /// GET /barang/:id — detail produk
   static Future<Product> getProductById(int id) async {
     try {
-      final res =
-          await http.get(_uri('/barang/$id'), headers: _headers);
+      final res = await http.get(_uri('/barang/$id'), headers: _headers);
       if (res.statusCode == 200) {
         final data = jsonDecode(res.body);
         return Product.fromJson(data is Map ? data : data['data']);
@@ -61,9 +56,7 @@ class ProductService {
     }
   }
 
-  /// POST /wishlist/toggle
-  static Future<bool> toggleWishlist(
-      int productId, bool currentState) async {
+  static Future<bool> toggleWishlist(int productId, bool currentState) async {
     try {
       final res = await http.post(
         _uri('/wishlist/toggle'),
@@ -76,7 +69,6 @@ class ProductService {
     }
   }
 
-  /// POST /transaksi — checkout
   static Future<Map<String, dynamic>> checkout(
       List<Map<String, dynamic>> items, int total) async {
     try {
